@@ -11,6 +11,7 @@ import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.marker.AbstractShapeMarker;
 import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.marker.MultiMarker;
+import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
 import de.fhpotsdam.unfolding.utils.MapUtils;
@@ -36,6 +37,7 @@ public class EarthquakeCityMap extends PApplet {
 
 	// IF YOU ARE WORKING OFFILINE, change the value of this variable to true
 	private static final boolean offline = false;
+	//private static final boolean offline = true;
 	
 	/** This is where to find the local tiles, for working without an Internet connection */
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
@@ -141,17 +143,32 @@ public class EarthquakeCityMap extends PApplet {
 		textSize(12);
 		text("Earthquake Key", 50, 75);
 		
+		//fill(color(255, 255, 0));
+		//ellipse(50, 125, 15, 15);
+		//fill(color(255, 255, 0));
+		//ellipse(50, 175, 10, 10);
+		//fill(color(0, 0, 255));
+		//ellipse(50, 225, 5, 5);
 		fill(color(255, 0, 0));
-		ellipse(50, 125, 15, 15);
+		triangle(40, 130, 45, 120, 50, 130);
+		fill(color(255, 255, 255));
+		ellipse(45, 145, 10, 10);
+		rect(40, 160, 10, 10);
 		fill(color(255, 255, 0));
-		ellipse(50, 175, 10, 10);
+		ellipse(45, 205, 10, 10);
 		fill(color(0, 0, 255));
-		ellipse(50, 225, 5, 5);
+		ellipse(45, 225, 10, 10);
+		fill(color(255, 0, 0));
+		ellipse(45, 245, 10, 10);
 		
 		fill(0, 0, 0);
-		text("5.0+ Magnitude", 75, 125);
-		text("4.0+ Magnitude", 75, 175);
-		text("Below 4.0", 75, 225);
+		text("City Marker", 65, 125);
+		text("Land Quake", 65, 145);
+		text("Ocean Quake", 65, 165);
+		text("Size - Magnitude", 40, 185);
+		text("Shallow", 65, 205);
+		text("Intermediate", 65, 225);
+		text("Deep", 65, 245);
 	}
 
 	
@@ -165,7 +182,15 @@ public class EarthquakeCityMap extends PApplet {
 		// IMPLEMENT THIS: loop over all countries to check if location is in any of them
 		
 		// TODO: Implement this method using the helper method isInCountry
-		
+		//Marker val = new AbstractShapeMarker(earthquake.getLocation());
+		//System.out.println(earthquake.getLocation());
+		//System.out.println(earthquake.getProperties());
+		//if (isInCountry(earthquake))
+		for (Marker country : countryMarkers) {
+			if (isInCountry(earthquake, country)) {
+				return true;
+			}
+		}
 		// not inside any country
 		return false;
 	}
@@ -179,6 +204,7 @@ public class EarthquakeCityMap extends PApplet {
 	private void printQuakes() 
 	{
 		// TODO: Implement this method
+		//System.out.println(f.getProperties());
 	}
 	
 	

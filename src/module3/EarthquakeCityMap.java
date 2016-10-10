@@ -11,6 +11,7 @@ import processing.core.PApplet;
 
 //Unfolding libraries
 import de.fhpotsdam.unfolding.UnfoldingMap;
+import de.fhpotsdam.unfolding.marker.AbstractShapeMarker;
 import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.data.Feature;
 import de.fhpotsdam.unfolding.data.PointFeature;
@@ -102,7 +103,6 @@ public class EarthquakeCityMap extends PApplet {
 	    int yellow = color(255, 255, 0);
 	    int red = color(255, 0, 0);
 	    int green = color(0, 255, 0);
-	    
 	    //TODO: Add code here as appropriate
 	    for (PointFeature eq: earthquakes)
 	    {

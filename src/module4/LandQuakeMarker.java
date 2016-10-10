@@ -33,7 +33,12 @@ public class LandQuakeMarker extends EarthquakeMarker {
 		// and how it is set in the EarthquakeMarker constructor
 		
 		// TODO: Implement this method
-		
+		pg.pushStyle();
+		//pg.fill(255, 0, 0);
+		float r = getRadius();
+		pg.ellipse(x, y, r, r);
+		// Restore previous drawing style
+		pg.popStyle();	
 	}
 	
 
