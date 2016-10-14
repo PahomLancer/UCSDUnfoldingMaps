@@ -16,7 +16,7 @@ import processing.core.PGraphics;
 // TODO: Change SimplePointMarker to CommonMarker as the very first thing you do 
 // in module 5 (i.e. CityMarker extends CommonMarker).  It will cause an error.
 // That's what's expected.
-public class CityMarker extends SimplePointMarker {
+public class CityMarker extends CommonMarker {
 	
 	public static int TRI_SIZE = 5;  // The size of the triangle marker
 	
@@ -35,7 +35,8 @@ public class CityMarker extends SimplePointMarker {
 	/**
 	 * Implementation of method to draw marker on the map.
 	 */
-	public void draw(PGraphics pg, float x, float y) {
+	//public void draw(PGraphics pg, float x, float y) {
+	public void drawMarker(PGraphics pg, float x, float y) {
 		// Save previous drawing style
 		pg.pushStyle();
 		
@@ -50,8 +51,23 @@ public class CityMarker extends SimplePointMarker {
 	/** Show the title of the city if this marker is selected */
 	public void showTitle(PGraphics pg, float x, float y)
 	{
-		
 		// TODO: Implement this method
+		pg.pushStyle();
+		pg.fill(150, 150, 150);
+		String name = getCity() + " " + getCountry() + " ";
+		String pop = "Pop: " + getPopulation() + " Million";
+		if (pop.length() > name.length())
+		{
+			pg.rect(x, y, pop.length()*8 + 6, 24);
+		}
+		else
+		{
+			pg.rect(x, y, name.length()*8 + 6, 24);
+		}
+		pg.fill(120, 0, 0);
+		pg.text(name, x, y+12);
+		pg.text(pop, x, y+22);
+		pg.popStyle();
 	}
 	
 	
